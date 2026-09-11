@@ -200,4 +200,9 @@ router.post('/admin/don-hang/:ma/xu-ly', requireAdmin, checkCsrf, (req, res) => 
   res.redirect('/admin/don-hang');
 });
 
+router.post('/admin/don-hang/:ma/xoa', requireAdmin, checkCsrf, (req, res) => {
+  orderStore.removeOrder(req.params.ma);
+  res.redirect('/admin/don-hang');
+});
+
 module.exports = router;

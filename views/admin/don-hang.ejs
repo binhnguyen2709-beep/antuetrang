@@ -34,12 +34,18 @@
           <td><b><%= o.tong_tien.toLocaleString('vi-VN') %>₫</b></td>
           <td><span class="badge badge--<%= o.trang_thai %>"><%= o.trang_thai === 'da_xu_ly' ? 'Đã xử lý' : 'Mới' %></span></td>
           <td>
-            <% if (o.trang_thai !== 'da_xu_ly') { %>
-              <form method="POST" action="/admin/don-hang/<%= o.ma %>/xu-ly">
+            <div class="admin-actions">
+              <% if (o.trang_thai !== 'da_xu_ly') { %>
+                <form method="POST" action="/admin/don-hang/<%= o.ma %>/xu-ly">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit" class="text-link" style="border:none; background:none; cursor:pointer; font-family:var(--sans);">Đã xử lý</button>
+                </form>
+              <% } %>
+              <form method="POST" action="/admin/don-hang/<%= o.ma %>/xoa" onsubmit="return confirm('Xóa đơn hàng này? Không thể hoàn tác.');">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <button type="submit" class="text-link" style="border:none; background:none; cursor:pointer; font-family:var(--sans);">Đánh dấu đã xử lý</button>
+                <button type="submit">Xóa</button>
               </form>
-            <% } %>
+            </div>
           </td>
         </tr>
       <% }); %>
