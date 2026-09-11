@@ -1,0 +1,21 @@
+<div class="admin-card">
+  <h1>Đăng nhập quản trị</h1>
+  <p style="color:var(--ink-soft); margin-bottom:20px;">Khu vực quản lý sản phẩm và đơn hàng AN TUỆ TRANG.</p>
+
+  <% if (loi) { %>
+    <div class="admin-error"><%= loi %></div>
+  <% } %>
+
+  <form method="POST" action="/admin/login">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <div class="field">
+      <label for="username">Tên đăng nhập</label>
+      <input type="text" id="username" name="username" required autofocus>
+    </div>
+    <div class="field">
+      <label for="password">Mật khẩu</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn--solid" style="width:100%; justify-content:center;">Đăng nhập</button>
+  </form>
+</div>

@@ -86,14 +86,7 @@
     </div>
     <div class="product-list">
       <% noiBat.forEach(function(sp){ %>
-        <a class="product-row" href="/cua-hang/<%= sp.slug %>" style="color:inherit;">
-          <span class="product-row__icon"><svg width="34" height="34"><use href="#icon-<%= sp.icon %>"/></svg></span>
-          <span>
-            <span class="product-row__name" style="display:block;"><%= sp.ten %></span>
-            <span class="product-row__desc"><%= sp.mo_ta %></span>
-          </span>
-          <span class="product-row__price"><%= sp.gia.toLocaleString('vi-VN') %>₫</span>
-        </a>
+        <%- include('partials/product-row', { sp, currentPath }) %>
       <% }); %>
     </div>
     <p style="margin-top:26px;"><a class="text-link" href="/cua-hang">Xem toàn bộ cửa hàng</a></p>

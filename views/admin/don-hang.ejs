@@ -1,0 +1,48 @@
+<h1>Đơn hàng</h1>
+
+<% if (orders.length === 0) { %>
+  <p class="admin-empty">Chưa có đơn hàng nào.</p>
+<% } else { %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Mã đơn</th>
+        <th>Khách hàng</th>
+        <th>Sản phẩm</th>
+        <th>Tổng tiền</th>
+        <th>Trạng thái</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function(o){ %>
+        <tr>
+          <td>
+            <b><%= o.ma %></b><br>
+            <span style="color:var(--ink-soft); font-size:0.82rem;"><%= new Date(o.ngay_tao).toLocaleString('vi-VN') %></span>
+          </td>
+          <td>
+            <%= o.khach.ho_ten %><br>
+            <span style="color:var(--ink-soft); font-size:0.85rem;"><%= o.khach.dien_thoai %><br><%= o.khach.dia_chi %></span>
+            <% if (o.khach.ghi_chu) { %><br><span style="color:var(--ink-soft); font-size:0.85rem;">Ghi chú: <%= o.khach.ghi_chu %></span><% } %>
+          </td>
+          <td>
+            <% o.items.forEach(function(i){ %>
+              <div><%= i.ten %> × <%= i.so_luong %></div>
+            <% }); %>
+          </td>
+          <td><b><%= o.tong_tien.toLocaleString('vi-VN') %>₫</b></td>
+          <td><span class="badge badge--<%= o.trang_thai %>"><%= o.trang_thai === 'da_xu_ly' ? 'Đã xử lý' : 'Mới' %></span></td>
+          <td>
+            <% if (o.trang_thai !== 'da_xu_ly') { %>
+              <form method="POST" action="/admin/don-hang/<%= o.ma %>/xu-ly">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="text-link" style="border:none; background:none; cursor:pointer; font-family:var(--sans);">Đánh dấu đã xử lý</button>
+              </form>
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } %>

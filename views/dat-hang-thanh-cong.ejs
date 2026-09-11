@@ -1,0 +1,22 @@
+<section class="section state-404">
+  <div class="wrap">
+    <p class="eyebrow-note">Đặt hàng thành công</p>
+    <h1>Cảm ơn bạn, <%= order.khach.ho_ten %>!</h1>
+    <p class="wide">Đơn hàng <b><%= order.ma %></b> của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ qua số <b><%= order.khach.dien_thoai %></b> để xác nhận và giao hàng — thanh toán khi nhận hàng (COD).</p>
+
+    <ul class="spec-list" style="max-width:520px;">
+      <% order.items.forEach(function(i){ %>
+        <li><b><%= i.ten %> × <%= i.so_luong %></b><span><%= i.thanh_tien.toLocaleString('vi-VN') %>₫</span></li>
+      <% }); %>
+    </ul>
+    <div class="cart-summary" style="max-width:520px;">
+      <span>Tổng cộng</span>
+      <span class="cart-summary__total"><%= order.tong_tien.toLocaleString('vi-VN') %>₫</span>
+    </div>
+
+    <p style="display:flex; gap:20px; margin-top:30px;">
+      <a class="btn btn--solid" href="/">Về trang chủ</a>
+      <a class="btn" href="/cua-hang">Tiếp tục mua sắm</a>
+    </p>
+  </div>
+</section>

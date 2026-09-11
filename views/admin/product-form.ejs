@@ -1,0 +1,63 @@
+<% const s = sp || {}; %>
+<h1><%= sp && sp.slug ? 'Sửa sản phẩm' : 'Thêm sản phẩm' %></h1>
+
+<% if (loi) { %>
+  <div class="admin-error"><%= loi %></div>
+<% } %>
+
+<form method="POST" action="<%= sp && sp.slug ? '/admin/san-pham/' + sp.slug + '/sua' : '/admin/san-pham/moi' %>" enctype="multipart/form-data">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <div class="form-grid">
+    <div class="field field--full">
+      <label for="ten">Tên sản phẩm</label>
+      <input type="text" id="ten" name="ten" required value="<%= s.ten || '' %>">
+    </div>
+
+    <div class="field">
+      <label for="danh_muc">Danh mục</label>
+      <select id="danh_muc" name="danh_muc" required>
+        <% danhMucShop.forEach(function(dm){ %>
+          <option value="<%= dm.slug %>" <%= s.danh_muc === dm.slug ? 'selected' : '' %>><%= dm.ten %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="gia">Giá (VNĐ)</label>
+      <input type="number" id="gia" name="gia" required min="0" step="1000" value="<%= s.gia || '' %>">
+    </div>
+
+    <div class="field field--full">
+      <label for="chat_lieu">Chất liệu</label>
+      <input type="text" id="chat_lieu" name="chat_lieu" value="<%= s.chat_lieu || '' %>">
+    </div>
+
+    <div class="field field--full">
+      <label for="mo_ta">Mô tả</label>
+      <textarea id="mo_ta" name="mo_ta" rows="4"><%= s.mo_ta || '' %></textarea>
+    </div>
+
+    <div class="field">
+      <label for="icon">Icon minh họa (dùng khi chưa có ảnh)</label>
+      <select id="icon" name="icon">
+        <% iconOptions.forEach(function(ic){ %>
+          <option value="<%= ic %>" <%= s.icon === ic ? 'selected' : '' %>><%= ic %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="hinh_anh">Ảnh sản phẩm (JPG/PNG/WEBP, tối đa 4MB)</label>
+      <% if (s.hinh_anh) { %>
+        <img class="current-image" src="/images/products/<%= s.hinh_anh %>" alt="Ảnh hiện tại">
+      <% } %>
+      <input type="file" id="hinh_anh" name="hinh_anh" accept="image/jpeg,image/png,image/webp">
+    </div>
+  </div>
+
+  <p style="margin-top:28px;">
+    <button type="submit" class="btn btn--solid"><%= sp && sp.slug ? 'Lưu thay đổi' : 'Thêm sản phẩm' %></button>
+    <a class="btn" href="/admin" style="margin-left:12px;">Hủy</a>
+  </p>
+</form>

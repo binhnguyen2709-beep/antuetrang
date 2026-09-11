@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <%- include('head', { noindex: true }) %>
+</head>
+<body>
+  <%- include('icons') %>
+  <div class="admin-shell">
+    <% if (typeof showNav === 'undefined' || showNav) { %>
+      <div class="admin-topbar">
+        <span class="admin-topbar__brand">AN TUỆ TRANG · Quản trị</span>
+        <nav>
+          <a href="/admin" class="<%= currentPath === '/admin' ? 'is-active' : '' %>">Sản phẩm</a>
+          <a href="/admin/don-hang" class="<%= currentPath.startsWith('/admin/don-hang') ? 'is-active' : '' %>">Đơn hàng</a>
+          <a href="/" target="_blank" rel="noopener">Xem website</a>
+        </nav>
+        <form method="POST" action="/admin/logout">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="admin-topbar__logout">Đăng xuất</button>
+        </form>
+      </div>
+    <% } %>
+    <main class="admin-main">
+      <%- body %>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<div class="product-row">
+  <a class="product-row__link" href="/cua-hang/<%= sp.slug %>">
+    <span class="product-row__icon">
+      <% if (sp.hinh_anh) { %>
+        <img src="/images/products/<%= sp.hinh_anh %>" alt="<%= sp.ten %>" loading="lazy">
+      <% } else { %>
+        <svg width="34" height="34"><use href="#icon-<%= sp.icon %>"/></svg>
+      <% } %>
+    </span>
+    <span class="product-row__info">
+      <span class="product-row__name"><%= sp.ten %></span>
+      <% if (sp.chat_lieu) { %><span class="product-row__meta"><%= sp.chat_lieu %></span><% } %>
+      <span class="product-row__desc"><%= sp.mo_ta %></span>
+    </span>
+  </a>
+  <div class="product-row__side">
+    <span class="product-row__price"><%= sp.gia.toLocaleString('vi-VN') %>₫</span>
+    <form method="POST" action="/gio-hang/them">
+      <input type="hidden" name="slug" value="<%= sp.slug %>">
+      <input type="hidden" name="qty" value="1">
+      <input type="hidden" name="quay_lai" value="<%= currentPath %>">
+      <button type="submit" class="btn btn--mini">Thêm vào giỏ</button>
+    </form>
+  </div>
+</div>

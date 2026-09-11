@@ -1,0 +1,67 @@
+<section class="section">
+  <div class="wrap">
+    <h1>Giỏ hàng</h1>
+
+    <% if (items.length === 0) { %>
+      <div class="cart-empty">
+        <p class="wide">Giỏ hàng của bạn đang trống.</p>
+        <a class="btn btn--solid" href="/cua-hang">Xem Cửa Hàng</a>
+      </div>
+    <% } else { %>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach(function(i){ %>
+            <tr>
+              <td>
+                <div class="cart-row__main">
+                  <span class="cart-row__thumb">
+                    <% if (i.hinh_anh) { %>
+                      <img src="/images/products/<%= i.hinh_anh %>" alt="<%= i.ten %>">
+                    <% } else { %>
+                      <svg width="26" height="26"><use href="#icon-<%= i.icon %>"/></svg>
+                    <% } %>
+                  </span>
+                  <a class="cart-row__name" href="/cua-hang/<%= i.slug %>"><%= i.ten %></a>
+                </div>
+              </td>
+              <td><%= i.gia.toLocaleString('vi-VN') %>₫</td>
+              <td>
+                <form method="POST" action="/gio-hang/cap-nhat" class="cart-qty-form">
+                  <input type="hidden" name="slug" value="<%= i.slug %>">
+                  <input type="number" name="qty" value="<%= i.soLuong %>" min="1" max="20">
+                  <button type="submit" class="text-link" style="border:none; background:none; font-size:0.85rem; cursor:pointer;">Cập nhật</button>
+                </form>
+              </td>
+              <td><b><%= i.thanhTien.toLocaleString('vi-VN') %>₫</b></td>
+              <td>
+                <form method="POST" action="/gio-hang/xoa">
+                  <input type="hidden" name="slug" value="<%= i.slug %>">
+                  <button type="submit" class="cart-remove">Xóa</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <span>Tổng cộng</span>
+        <span class="cart-summary__total"><%= tongTien.toLocaleString('vi-VN') %>₫</span>
+      </div>
+
+      <div class="cart-actions">
+        <a class="text-link" href="/cua-hang">Tiếp tục xem sản phẩm</a>
+        <a class="btn btn--solid" href="/dat-hang">Tiến hành đặt hàng</a>
+      </div>
+    <% } %>
+  </div>
+</section>

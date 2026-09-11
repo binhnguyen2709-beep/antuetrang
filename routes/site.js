@@ -2,6 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
+const productStore = require('../lib/productStore');
+const { DANH_MUC_SHOP } = require('../lib/constants');
+
 const router = express.Router();
 
 function loadJSON(file) {
@@ -12,17 +15,10 @@ function loadJSON(file) {
 function getData() {
   return {
     checklist: loadJSON('checklist.json'),
-    products: loadJSON('products.json'),
+    products: productStore.readAll(),
     faq: loadJSON('faq.json'),
   };
 }
-
-const DANH_MUC_SHOP = [
-  { slug: 'khong-gian-tho-cung', ten: 'Không gian thờ cúng' },
-  { slug: 'qua-tang-van-hoa', ten: 'Quà tặng Văn hóa & Biểu tượng' },
-  { slug: 'thu-gian-tinh-tam', ten: 'Thư giãn & Tĩnh tâm' },
-  { slug: 'vang-ma', ten: 'Vàng mã tối giản' },
-];
 
 router.get('/', (req, res) => {
   const { products } = getData();
