@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a href="/" class="brand">
+      <svg class="brand__mark" width="28" height="28"><use href="#icon-mark"/></svg>
+      <span class="brand__name">AN TUỆ TRANG</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+      <span class="nav-toggle__label">Menu</span>
+    </button>
+
+    <nav class="site-nav" id="siteNav">
+      <a href="/so-tay-le-nghi" class="<%= currentPath.startsWith('/so-tay-le-nghi') ? 'is-active' : '' %>">Sổ Tay Lễ Nghi</a>
+      <a href="/cua-hang" class="<%= currentPath.startsWith('/cua-hang') ? 'is-active' : '' %>">Cửa Hàng</a>
+      <a href="/goc-van-hoa" class="<%= currentPath.startsWith('/goc-van-hoa') ? 'is-active' : '' %>">Góc Văn Hóa</a>
+      <a href="/ve-chung-toi" class="<%= currentPath.startsWith('/ve-chung-toi') ? 'is-active' : '' %>">Về Chúng Tôi</a>
+      <a href="/ho-tro-lien-he" class="<%= currentPath.startsWith('/ho-tro-lien-he') ? 'is-active' : '' %>">Hỗ Trợ &amp; Liên Hệ</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow-note"><a class="text-link" href="/cua-hang">Cửa Hàng</a> / <%= danhMuc ? danhMuc.ten : '' %></p>
+
+    <div class="product-hero">
+      <div class="product-hero__icon">
+        <svg><use href="#icon-<%= sp.icon %>"/></svg>
+      </div>
+      <div>
+        <h1><%= sp.ten %></h1>
+        <p class="product-price"><%= sp.gia.toLocaleString('vi-VN') %>₫</p>
+        <p class="wide"><%= sp.mo_ta %></p>
+
+        <ul class="spec-list">
+          <li><b>Chất liệu</b><span><%= sp.chat_lieu %></span></li>
+          <li><b>Danh mục</b><span><%= danhMuc ? danhMuc.ten : '' %></span></li>
+        </ul>
+
+        <p><a class="btn btn--solid" href="/ho-tro-lien-he">Liên hệ đặt hàng</a></p>
+        <p style="color:var(--ink-soft); font-size:0.88rem;">Chúng tôi tư vấn trực tiếp trước khi lên đơn để đảm bảo sản phẩm phù hợp với nhu cầu và dịp lễ cụ thể của bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (lienQuan && lienQuan.length) { %>
+<section class="section section--tinted">
+  <div class="wrap">
+    <h2>Sản phẩm liên quan</h2>
+    <div class="product-list">
+      <% lienQuan.forEach(function(rp){ %>
+        <a class="product-row" href="/cua-hang/<%= rp.slug %>" style="color:inherit;">
+          <span class="product-row__icon"><svg width="34" height="34"><use href="#icon-<%= rp.icon %>"/></svg></span>
+          <span>
+            <span class="product-row__name" style="display:block;"><%= rp.ten %></span>
+            <span class="product-row__desc"><%= rp.mo_ta %></span>
+          </span>
+          <span class="product-row__price"><%= rp.gia.toLocaleString('vi-VN') %>₫</span>
+        </a>
+      <% }); %>
+    </div>
+  </div>
+</section>
+<% } %>

@@ -1,0 +1,116 @@
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <h1 class="hero__lines"><span>Gìn giữ văn hóa.</span><span>An yên tâm trí.</span></h1>
+      <p class="hero__scope wide">AN TUỆ TRANG đồng hành cùng gia đình Việt qua từng nghi lễ — từ đầy tháng, cưới hỏi đến giỗ chạp, Tết nhất — bằng tri thức chuẩn mực và vật phẩm tinh tế, theo hướng nhân văn và không mê tín.</p>
+
+      <div class="hero__doorways">
+        <a class="doorway" href="/so-tay-le-nghi">
+          <svg width="30" height="30"><use href="#icon-truc"/></svg>
+          <span class="doorway__text">
+            <strong>Sổ Tay Lễ Nghi</strong>
+            <span>Hướng dẫn chuẩn mực và checklist chuẩn bị theo từng dịp</span>
+          </span>
+          <span class="doorway__rule" aria-hidden="true"></span>
+        </a>
+        <a class="doorway" href="/cua-hang">
+          <svg width="30" height="30"><use href="#icon-gom"/></svg>
+          <span class="doorway__text">
+            <strong>Cửa Hàng</strong>
+            <span>Không gian thờ cúng, quà tặng văn hóa và sản phẩm tĩnh tâm</span>
+          </span>
+          <span class="doorway__rule" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="altar" aria-hidden="true">
+      <svg class="altar__item"><use href="#icon-sen"/></svg>
+      <svg class="altar__item"><use href="#icon-gom"/></svg>
+      <svg class="altar__item"><use href="#icon-nen"/></svg>
+      <svg class="altar__item"><use href="#icon-hac"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <h2>Ba điều chúng tôi giữ vững</h2>
+      <p>Mọi nội dung và sản phẩm của AN TUỆ TRANG đều được kiểm tra lại theo ba nguyên tắc sau trước khi đến tay bạn.</p>
+    </div>
+    <div class="list-grid--3 list-grid">
+      <div class="list-item">
+        <svg width="26" height="26"><use href="#icon-truc"/></svg>
+        <div>
+          <h3>Chuẩn mực, có căn cứ</h3>
+          <p>Nội dung dựa trên phong tục được ghi nhận rộng rãi, không thêm thắt nghi thức rườm rà hay hù dọa dâng sao giải hạn.</p>
+        </div>
+      </div>
+      <div class="list-item">
+        <svg width="26" height="26"><use href="#icon-sen"/></svg>
+        <div>
+          <h3>Thẩm mỹ, có công năng</h3>
+          <p>Vật phẩm được chọn vì chất liệu thật, dáng form gọn gàng và ý nghĩa biểu tượng — không phải để phô trương.</p>
+        </div>
+      </div>
+      <div class="list-item">
+        <svg width="26" height="26"><use href="#icon-phuc"/></svg>
+        <div>
+          <h3>Minh bạch, không mê tín</h3>
+          <p>Chúng tôi không cam kết đổi vận hay may rủi. Giá trị sản phẩm nằm ở trải nghiệm và ý nghĩa văn hóa thật sự.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="wrap two-col">
+    <div>
+      <h2>Sổ Tay Lễ Nghi</h2>
+      <p class="wide">Từ nghi lễ Vòng đời, Sống &amp; Tưởng nhớ đến các dịp Theo mùa trong năm — mỗi nghi lễ đều được trình bày rõ nguồn gốc, ý nghĩa và cách chuẩn bị vừa đủ, không lãng phí.</p>
+      <p><a class="text-link" href="/so-tay-le-nghi">Xem sổ tay đầy đủ và dùng công cụ checklist</a></p>
+    </div>
+    <blockquote class="pull-line">
+      "Nghi lễ trọn vẹn không nằm ở mâm cao cỗ đầy, mà ở sự chu đáo và lòng thành của người thực hiện."
+    </blockquote>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <h2>Sản phẩm nổi bật</h2>
+      <p>Một vài gợi ý từ Cửa Hàng — mỗi sản phẩm đều ghi rõ chất liệu và ý nghĩa biểu tượng.</p>
+    </div>
+    <div class="product-list">
+      <% noiBat.forEach(function(sp){ %>
+        <a class="product-row" href="/cua-hang/<%= sp.slug %>" style="color:inherit;">
+          <span class="product-row__icon"><svg width="34" height="34"><use href="#icon-<%= sp.icon %>"/></svg></span>
+          <span>
+            <span class="product-row__name" style="display:block;"><%= sp.ten %></span>
+            <span class="product-row__desc"><%= sp.mo_ta %></span>
+          </span>
+          <span class="product-row__price"><%= sp.gia.toLocaleString('vi-VN') %>₫</span>
+        </a>
+      <% }); %>
+    </div>
+    <p style="margin-top:26px;"><a class="text-link" href="/cua-hang">Xem toàn bộ cửa hàng</a></p>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="wrap two-col">
+    <div>
+      <h2>Triết lý "Tâm linh Văn minh"</h2>
+      <p class="wide">Chúng tôi tin rằng gìn giữ văn hóa không cần đi kèm nỗi sợ hãi hay mê tín. AN TUỆ TRANG tách bạch rõ giữa tri thức truyền thống và trải nghiệm tâm linh cá nhân của mỗi người.</p>
+      <p><a class="text-link" href="/ve-chung-toi">Tìm hiểu về AN TUỆ TRANG</a></p>
+    </div>
+    <div>
+      <h2>Góc Văn Hóa</h2>
+      <p class="wide">Từ điển biểu tượng, góc nhìn tâm lý tinh thần và phong thủy không gian sống — tri thức khoa học, nhân văn, giúp bạn hiểu đúng thay vì chỉ làm theo.</p>
+      <p><a class="text-link" href="/goc-van-hoa">Khám phá Góc Văn Hóa</a></p>
+    </div>
+  </div>
+</section>

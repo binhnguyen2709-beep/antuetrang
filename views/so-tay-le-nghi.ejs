@@ -1,0 +1,42 @@
+<section class="section" style="padding-bottom:20px;">
+  <div class="wrap">
+    <h1>Sổ Tay Lễ Nghi</h1>
+    <p class="wide">Hướng dẫn chuẩn mực các nghi lễ truyền thống của người Việt — trình bày rõ nguồn gốc, ý nghĩa, và cách chuẩn bị vừa đủ. Không cúng bái rườm rà, không dâng sao giải hạn, không hù dọa bằng những điều chưa được kiểm chứng.</p>
+  </div>
+</section>
+
+<% theoNhom.forEach(function(nhom){ %>
+<section class="section">
+  <div class="wrap">
+    <div class="ritual-group">
+      <div class="ritual-group__title"><h2 style="margin-bottom:0;"><%= nhom.ten %></h2></div>
+      <div class="ritual-list">
+        <% nhom.danhSach.forEach(function(item){ %>
+          <a href="#cong-cu" class="js-select-checklist" data-slug="<%= item.slug %>">
+            <span class="ritual-list__name"><%= item.ten %></span>
+            <span class="ritual-list__desc"><%= item.gioi_thieu %></span>
+          </a>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</section>
+<% }); %>
+
+<section class="tool" id="cong-cu">
+  <div class="wrap">
+    <h2>Công cụ: Checklist chuẩn bị Lễ nghi</h2>
+    <p class="wide">Chọn dịp lễ bên dưới để xem danh sách lễ vật, không gian và lưu ý cần chuẩn bị — vừa đủ dùng, không dư thừa.</p>
+
+    <div class="tool__picker" id="toolPicker">
+      <% checklist.forEach(function(item){ %>
+        <button type="button" data-slug="<%= item.slug %>"><%= item.ten %></button>
+      <% }); %>
+    </div>
+
+    <div class="tool__result" id="toolResult"></div>
+  </div>
+</section>
+
+<script type="application/json" id="checklist-data"><%- JSON.stringify(checklist) %></script>
+<script src="/js/checklist.js?v=<%= assetVersion %>" defer></script>

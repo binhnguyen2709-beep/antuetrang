@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "huong-tram-khong-hoa-chat",
+    "ten": "Hương trầm không hóa chất",
+    "danh_muc": "khong-gian-tho-cung",
+    "icon": "tram",
+    "chat_lieu": "Bột trầm hương tự nhiên, tăm tre, không tẩm hương liệu tổng hợp",
+    "mo_ta": "Cháy chậm, khói mỏng, mùi thơm dịu — dùng được cho không gian thờ cúng lẫn phòng ngủ mà không gây khó chịu.",
+    "gia": 145000
+  },
+  {
+    "slug": "den-dau-gom-son-mai",
+    "ten": "Đèn dầu gốm sơn mài",
+    "danh_muc": "khong-gian-tho-cung",
+    "icon": "den",
+    "chat_lieu": "Gốm tráng men, sơn mài thủ công",
+    "mo_ta": "Ánh sáng ấm, ổn định, thay thế đèn điện nhấp nháy trên bàn thờ — dáng gốm tối giản, hợp nhiều không gian thờ khác nhau.",
+    "gia": 320000
+  },
+  {
+    "slug": "bo-do-tho-gom-men-ngoc",
+    "ten": "Bộ đồ thờ gốm men ngọc",
+    "danh_muc": "khong-gian-tho-cung",
+    "icon": "gom",
+    "chat_lieu": "Gốm men ngọc, nung ở nhiệt độ cao, không chì",
+    "mo_ta": "Gồm bát hương, đôi chân nến, đĩa trái cây — form dáng gọn, men xanh trầm giúp bàn thờ trang nghiêm mà không nặng nề.",
+    "gia": 890000
+  },
+  {
+    "slug": "nen-sap-ong-khong-khoi",
+    "ten": "Nến sáp ong không khói",
+    "danh_muc": "khong-gian-tho-cung",
+    "icon": "nen",
+    "chat_lieu": "Sáp ong nguyên chất, tim cotton",
+    "mo_ta": "Cháy sạch, gần như không khói đen ám trần và tường — phù hợp không gian thờ trong nhà ở kín gió.",
+    "gia": 95000
+  },
+  {
+    "slug": "tuong-sen-go-mit",
+    "ten": "Tượng Sen gỗ mít",
+    "danh_muc": "qua-tang-van-hoa",
+    "icon": "sen",
+    "chat_lieu": "Gỗ mít nguyên khối, chạm tay thủ công",
+    "mo_ta": "Hoa sen tượng trưng cho sự thanh sạch vươn lên từ nghịch cảnh — món quà tặng tân gia, mừng thọ hoặc trưng bày phòng khách.",
+    "gia": 650000
+  },
+  {
+    "slug": "tranh-truc-thu-phap",
+    "ten": "Tranh Trúc thư pháp",
+    "danh_muc": "qua-tang-van-hoa",
+    "icon": "truc",
+    "chat_lieu": "Giấy dó, mực nho, khung gỗ tự nhiên",
+    "mo_ta": "Hình ảnh trúc gợi khí tiết ngay thẳng, kiên cường — phù hợp làm quà tặng tân gia, khai trương hoặc mừng thăng chức.",
+    "gia": 480000
+  },
+  {
+    "slug": "chu-phuc-loc-tho-dong",
+    "ten": "Bộ chữ Phúc – Lộc – Thọ đồng",
+    "danh_muc": "qua-tang-van-hoa",
+    "icon": "phuc",
+    "chat_lieu": "Hợp kim đồng, xử lý chống oxy hóa",
+    "mo_ta": "Ba chữ tượng trưng cho phúc phần, tài lộc và sức khỏe lâu dài — quà tặng ý nghĩa cho dịp tân gia, mừng thọ, khai trương.",
+    "gia": 720000
+  },
+  {
+    "slug": "tuong-hac-gom-trang",
+    "ten": "Tượng Hạc gốm trắng",
+    "danh_muc": "qua-tang-van-hoa",
+    "icon": "hac",
+    "chat_lieu": "Gốm trắng men mờ",
+    "mo_ta": "Hạc gắn liền với hình ảnh trường thọ, thanh cao trong văn hóa Á Đông — phù hợp trưng bàn thờ gia tiên hoặc phòng khách.",
+    "gia": 540000
+  },
+  {
+    "slug": "tram-huong-nguyen-mieng",
+    "ten": "Trầm hương nguyên miếng",
+    "danh_muc": "thu-gian-tinh-tam",
+    "icon": "tram",
+    "chat_lieu": "Trầm hương tự nhiên khai thác có kiểm soát",
+    "mo_ta": "Dùng để xông trầm thư giãn, hỗ trợ tĩnh tâm sau ngày dài — mùi hương ấm, sâu, không gắt.",
+    "gia": 1250000
+  },
+  {
+    "slug": "nen-thom-tinh-tam-sen",
+    "ten": "Nến thơm tĩnh tâm hương Sen",
+    "danh_muc": "thu-gian-tinh-tam",
+    "icon": "nen",
+    "chat_lieu": "Sáp đậu nành, tinh dầu sen tự nhiên, tim gỗ",
+    "mo_ta": "Cháy đều, tiếng nổ lách tách nhẹ từ tim gỗ — hỗ trợ thư giãn khi đọc sách, thiền hoặc trước giờ ngủ.",
+    "gia": 285000
+  },
+  {
+    "slug": "tra-thien-sen-atiso",
+    "ten": "Trà thiền Sen – Atiso",
+    "danh_muc": "thu-gian-tinh-tam",
+    "icon": "sen",
+    "chat_lieu": "Trà sen ướp truyền thống kết hợp atiso, đóng gói túi lọc",
+    "mo_ta": "Vị thanh nhẹ, ít caffeine, phù hợp buổi tối hoặc lúc cần tĩnh tâm — dùng khi thiền, đọc sách hoặc tiếp khách.",
+    "gia": 165000
+  },
+  {
+    "slug": "vong-tram-huong-tho-moc",
+    "ten": "Vòng trầm hương thô mộc",
+    "danh_muc": "thu-gian-tinh-tam",
+    "icon": "may",
+    "chat_lieu": "Gỗ trầm hương ép tự nhiên, không pha tạp chất",
+    "mo_ta": "Đeo tay hằng ngày, hương thơm nhẹ tự nhiên tỏa ra khi tiếp xúc nhiệt độ cơ thể — vật dụng nhắc nhở giữ tâm an giữa ngày bận rộn.",
+    "gia": 390000
+  },
+  {
+    "slug": "vang-ma-tho-cam-toi-gian",
+    "ten": "Bộ giấy tiền vàng mã tối giản",
+    "danh_muc": "vang-ma",
+    "icon": "phuc",
+    "chat_lieu": "Giấy tái chế, mực in gốc nước, không phẩm màu công nghiệp",
+    "mo_ta": "Số lượng vừa đủ cho một lần cúng, không đóng gói theo bó lớn — hướng đến sự tưởng nhớ chỉn chu thay vì số lượng.",
+    "gia": 45000
+  },
+  {
+    "slug": "bo-do-vang-ma-le-gio",
+    "ten": "Bộ đồ vàng mã lễ giỗ cơ bản",
+    "danh_muc": "vang-ma",
+    "icon": "may",
+    "chat_lieu": "Giấy thủ công, khung tre",
+    "mo_ta": "Bộ cơ bản dùng trong lễ giỗ theo phong tục miền Bắc — đóng gói gọn, có hướng dẫn sử dụng đúng nghi thức, tránh đốt dư thừa.",
+    "gia": 120000
+  }
+]

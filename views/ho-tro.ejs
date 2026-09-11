@@ -1,0 +1,60 @@
+<section class="section" style="padding-bottom:20px;">
+  <div class="wrap">
+    <h1>Hỗ Trợ &amp; Liên Hệ</h1>
+    <p class="wide">Tư vấn nghi lễ, chuẩn bị mâm cúng, chính sách đổi trả – giao hàng và giải đáp thắc mắc — trang trọng, tiết kiệm và an toàn.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Gửi câu hỏi cho chúng tôi</h2>
+      <p>Điền thông tin bên dưới, đội ngũ tư vấn nghi lễ của AN TUỆ TRANG sẽ phản hồi trong vòng 24 giờ làm việc.</p>
+
+      <% if (sent) { %>
+        <div class="form-success">Cảm ơn bạn đã gửi liên hệ. Chúng tôi sẽ phản hồi sớm nhất có thể.</div>
+      <% } %>
+
+      <form method="POST" action="/ho-tro-lien-he">
+        <div class="field">
+          <label for="ho_ten">Họ và tên</label>
+          <input type="text" id="ho_ten" name="ho_ten" required>
+        </div>
+        <div class="field">
+          <label for="dien_thoai">Số điện thoại</label>
+          <input type="tel" id="dien_thoai" name="dien_thoai">
+        </div>
+        <div class="field">
+          <label for="noi_dung">Nội dung cần tư vấn</label>
+          <textarea id="noi_dung" name="noi_dung" rows="5" required placeholder="Ví dụ: Tôi cần tư vấn chuẩn bị mâm cúng đầy tháng cho bé..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--solid">Gửi liên hệ</button>
+      </form>
+    </div>
+
+    <div id="chinh-sach">
+      <h2>Chính sách đổi trả &amp; giao hàng</h2>
+      <ul class="spec-list">
+        <li><b>Đổi trả</b><span>Trong 7 ngày với sản phẩm còn nguyên vẹn, chưa sử dụng (trừ nhang, nến, trà đã mở bao bì).</span></li>
+        <li><b>Hàng lỗi</b><span>Đổi mới hoặc hoàn tiền 100% nếu lỗi do vận chuyển hoặc sản xuất.</span></li>
+        <li><b>Giao nội thành</b><span>1–2 ngày làm việc tại các thành phố lớn.</span></li>
+        <li><b>Giao tỉnh</b><span>3–5 ngày làm việc tùy khu vực.</span></li>
+        <li><b>Đơn cần gấp</b><span>Ghi rõ ngày cần nhận khi đặt hàng để được ưu tiên xử lý cho kịp lễ, giỗ.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tinted" id="faq">
+  <div class="wrap">
+    <h2>Câu hỏi thường gặp</h2>
+    <div>
+      <% faq.forEach(function(f){ %>
+        <details class="faq-item">
+          <summary><%= f.hoi %></summary>
+          <p class="wide"><%= f.dap %></p>
+        </details>
+      <% }); %>
+    </div>
+  </div>
+</section>

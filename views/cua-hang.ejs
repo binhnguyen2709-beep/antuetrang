@@ -1,0 +1,38 @@
+<section class="section" style="padding-bottom:20px;">
+  <div class="wrap">
+    <h1>Cửa Hàng</h1>
+    <p class="wide">Sản phẩm có công năng, chất liệu rõ ràng và thiết kế tinh tế. Mô tả tập trung vào ý nghĩa biểu tượng, vật liệu và trải nghiệm sử dụng — chúng tôi không hứa hẹn bất kỳ công dụng "đổi vận" nào.</p>
+
+    <div class="shop-tabs" id="shopTabs">
+      <button type="button" class="is-active" data-filter="all">Tất cả</button>
+      <% danhMucShop.forEach(function(dm){ %>
+        <button type="button" data-filter="<%= dm.slug %>"><%= dm.ten %></button>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <% theoDanhMuc.forEach(function(nhom){ %>
+      <div data-shop-section="<%= nhom.slug %>">
+        <h2 class="product-category-title"><%= nhom.ten %></h2>
+        <div class="product-list">
+          <% nhom.sanPham.forEach(function(sp){ %>
+            <a class="product-row" href="/cua-hang/<%= sp.slug %>" style="color:inherit;">
+              <span class="product-row__icon"><svg width="34" height="34"><use href="#icon-<%= sp.icon %>"/></svg></span>
+              <span>
+                <span class="product-row__name" style="display:block;"><%= sp.ten %></span>
+                <span class="product-row__meta"><%= sp.chat_lieu %></span>
+                <span class="product-row__desc"><%= sp.mo_ta %></span>
+              </span>
+              <span class="product-row__price"><%= sp.gia.toLocaleString('vi-VN') %>₫</span>
+            </a>
+          <% }); %>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<script src="/js/shop.js?v=<%= assetVersion %>" defer></script>
