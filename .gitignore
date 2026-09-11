@@ -4,6 +4,7 @@ server.log
 npm-debug.log*
 data/lien-he.log
 data/orders.json
+data/products.json
 public/images/products/*
 !public/images/products/.gitkeep
 .DS_Store

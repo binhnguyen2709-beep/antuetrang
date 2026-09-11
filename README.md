@@ -58,7 +58,9 @@ Copy chuỗi hash in ra, dán vào `ADMIN_PASSWORD_HASH` trong `.env`, rồi kh�
 
 ## Sao lưu dữ liệu "sống"
 
-`data/products.json`, `data/orders.json`, `public/images/products/*` là dữ liệu thay đổi khi vận hành (qua trang admin và khi khách đặt hàng) — trong đó `orders.json` và ảnh upload **không được đưa lên GitHub** (chứa thông tin khách hàng / dung lượng lớn, xem `.gitignore`). Trên server thật, nên sao lưu định kỳ 3 mục này riêng (ví dụ rsync hoặc cron nén gửi email/lưu trữ ngoài), vì `git pull` sau này sẽ không khôi phục được chúng.
+`data/products.json`, `data/orders.json`, `public/images/products/*` là dữ liệu thay đổi khi vận hành (qua trang admin và khi khách đặt hàng) — **cả 3 đều không nằm trong git** (xem `.gitignore`), để `git pull` khi cập nhật code không bao giờ ghi đè hoặc xóa mất dữ liệu admin đã thêm trên server thật. Danh mục 14 sản phẩm mẫu ban đầu vẫn được lưu trong `data/products.seed.json` (có trong git) — nếu `data/products.json` chưa tồn tại (server mới, chưa từng chạy), ứng dụng tự tạo nó từ file seed này khi khởi động lần đầu.
+
+Trên server thật, nên sao lưu định kỳ `data/products.json`, `data/orders.json` và `public/images/products/` riêng (ví dụ rsync hoặc cron nén gửi lưu trữ ngoài) — mất kết nối server đồng nghĩa mất luôn dữ liệu này nếu không sao lưu.
 
 ## Việc còn thiếu, cần quyết định thêm trước khi vận hành thật
 
@@ -90,5 +92,33 @@ git push -u origin main
 7. Lưu tiến trình để tự khởi động lại khi server reboot: `pm2 save && pm2 startup`
 8. Trỏ domain/subdomain về server, cấu hình reverse proxy (Nginx) từ cổng 80/443 sang cổng Node (mặc định 3000), bật SSL (Let's Encrypt/Certbot hoặc SSL có sẵn của Hostinger).
 9. Sau khi SSL hoạt động, đặt `COOKIE_SECURE=true` và `TRUST_PROXY=true` trong `.env` trên server rồi khởi động lại (`pm2 restart an-tue-trang`) — nếu không, cookie đăng nhập admin/giỏ hàng có thể không hoạt động đúng qua HTTPS phía sau Nginx.
+
+## Tự động deploy khi push (GitHub Actions)
+
+Từ lần thiết lập này, mỗi khi push lên nhánh `main`, GitHub sẽ tự SSH vào server, `git pull`, cài lại dependency và reload PM2 — không cần SSH tay nữa. Cấu hình sẵn tại [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+
+**Điều kiện cần có trước:** server đã được deploy thủ công ít nhất một lần theo mục "Deploy lên Hostinger" ở trên (đã có sẵn thư mục project là một git clone, đã cài Node/PM2, đã chạy `pm2 start ecosystem.config.js`).
+
+**Thiết lập (một lần):**
+
+1. Trên server, tạo một cặp SSH key riêng cho việc deploy (khuyến khích, không dùng chung key cá nhân của bạn):
+   ```bash
+   ssh-keygen -t ed25519 -C "github-deploy" -f ~/.ssh/github_deploy -N ""
+   cat ~/.ssh/github_deploy.pub >> ~/.ssh/authorized_keys
+   cat ~/.ssh/github_deploy
+   ```
+   Copy toàn bộ nội dung private key in ra ở lệnh cuối (bao gồm cả dòng `-----BEGIN...-----` và `-----END...-----`).
+
+2. Trên GitHub: vào repo → **Settings → Secrets and variables → Actions → New repository secret**, thêm 4 secret:
+   | Tên secret | Giá trị |
+   |---|---|
+   | `SSH_HOST` | IP hoặc domain của server |
+   | `SSH_USER` | username SSH (vd: `root` hoặc user riêng) |
+   | `SSH_PRIVATE_KEY` | nội dung private key vừa tạo ở bước 1 |
+   | `APP_PATH` | đường dẫn tuyệt đối tới thư mục project trên server (vd: `/home/user/an-tue-trang`) |
+
+3. Push lên `main` — vào tab **Actions** trên GitHub để xem tiến trình deploy chạy trực tiếp.
+
+**Nếu deploy lỗi "pm2: command not found" hoặc "npm: command not found":** SSH qua GitHub Actions chạy shell không tương tác, đôi khi không nạp `PATH` như shell thường (đặc biệt nếu Node cài qua nvm). Sửa bằng cách thêm dòng `export PATH="$HOME/.nvm/versions/node/<version>/bin:$PATH"` (thay `<version>` bằng bản Node đang dùng, xem `node -v` trên server) vào đầu phần `script:` trong `deploy.yml`.
 
 Nếu dùng hosting chia sẻ thông thường (không hỗ trợ Node.js server chạy liên tục), cần build lại site này theo hướng static site (SSG) thay vì Express server.
